@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
-// const appRouter = require("./routes/router");
+const appRouter = require("./routes/router");
 const cors = require("cors");
 const session = require('express-session');
 require('./db');
@@ -18,7 +18,7 @@ app.use(
   })
 );
 app.use(session({
-    secret:'loalskwiaj',
+    secret:process.env.SESSION_KEY,
     resave:true,
     saveUninitialized:true,
 }))
@@ -29,7 +29,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/api', appRouter);
+app.use('/api', appRouter);
 app.listen(app.get('port'), () => {
   console.log("Server Started on port", app.get('port'));
 })
