@@ -1,0 +1,13 @@
+.register-module{
+    margin: 0 auto;
+    padding: 15% 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+.form-control{
+    width:25%;
+    margin: 15px auto;
+}
+.register-module h1{
+    text-transform:uppercase;
+}

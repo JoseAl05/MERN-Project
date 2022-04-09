@@ -1,0 +1,27 @@
+.login-module{
+    margin: 0 auto;
+    padding: 15% 15%;
+    box-sizing: border-box;
+    text-align: center;
+}
+.form-control{
+    width:25%;
+    margin: 15px auto;
+}
+.login-module h1{
+    text-transform: uppercase;
+}
+.border-login{
+    border:1px solid black;
+    border-radius: 10px;
+    margin: 0;
+    background: cadetblue;
+}
+.border-login form{
+    margin: 40px auto;
+}
+.border-login label{
+    text-transform: uppercase;
+    color:white;
+    font-weight: bold;
+}
