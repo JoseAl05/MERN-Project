@@ -1,24 +1,58 @@
 const User = require("../models/User");
 const {nanoid} = require("nanoid");
 const bcrypt = require('bcryptjs');
+const {validationResult} = require('express-validator');
+const nodemailer = require("nodemailer");
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const registerUser = async(req,res) => {
+    const errors = validationResult(req);
+
+    if(!errors.isEmpty()){
+        return res.status(400).send(errors.array());
+    }
+
     await User.findOne({
         email:req.body.email,
     })
-    .then(user => {
+    .then(async user => {
         if(!user){
-            const newUser = new User({
-                username:req.body.username,
-                email:req.body.email,
-                password:req.body.password,
-                tokenConfirm:nanoid(),
-            })
-            newUser.save();
 
-            return res.status(200).json(newUser);
+            const isUsername = await User.findOne({
+                username:req.body.username
+            });
+            if(isUsername){
+                return res.status(400).send({message:'The User with that username already exists!',name:'username'});
+            }else{
+                const newUser = new User({
+                    username:req.body.username,
+                    email:req.body.email,
+                    password:req.body.password,
+                    tokenConfirm:nanoid(),
+                })
+                newUser.save();
+
+                const transport = nodemailer.createTransport({
+                    host: "smtp.mailtrap.io",
+                    port: 2525,
+                    auth: {
+                      user: process.env.EMAIL_NAME,
+                      pass: process.env.PASSWORD_EMAIL
+                    }
+                });
+                await transport.sendMail({
+                    from: '"Fred Foo 👻" <foo@example.com>',
+                    to: req.body.email,
+                    subject: "Registration confirmation",
+                    html: `<a href="http://localhost:3000/confirm-register/${newUser.tokenConfirm}">Confirm your account here!</a>`,
+                });
+
+                return res.status(200).send({message:'Successful registration. Please check your email to confirm!',token_confirm:newUser.tokenConfirm});
+            }
         }
-        return res.status(403).send({message:'User already exists!'});
+        return res.status(400).send({message:'The User with that email already exists!',name:'email'});
     })
     .catch(error => {
         return res.status(500).send({error:error.message});
@@ -26,10 +60,17 @@ const registerUser = async(req,res) => {
 }
 
 const loginUser = async(req,res)=>{
+    const errors = validationResult(req);
+
+    if(!errors.isEmpty()){
+        return res.status(400).send(errors.array());
+    }
+
     await User.findOne({
         email:req.body.email,
     })
     .then(user => {
+        console.log(user);
         if(!user){
             return res.status(404).send({message:'User does not exists!'});
         }
@@ -42,18 +83,30 @@ const loginUser = async(req,res)=>{
         const passwordIsValid = bcrypt.compareSync(hashedPassword,user.password);
 
         if(!passwordIsValid){
-            return res.status(401).send({message:'Password invalid!'});
+            return res.status(400).send({message:'Password invalid!'});
         }
 
-        return res.status(200).json(user);
-
+        req.login(user,function(err){
+            if(err){
+                return res.status(401).send({message:'Error al crear la sesion!'});
+            }
+            return res.status(200).json(user);
+        })
     })
     .catch(error => {
         return res.status(500).send({error:error.message});
     })
 }
 
+const logout = (req,res) =>{
+    req.logout();
+    req.session.destroy();
+    return res.status(200).send({message:'Logged out succesfully!'});
+}
+
 const confirmToken = async(req,res) => {
+
+    console.log(req.params)
 
     await User.findOne({
         tokenConfirm:req.params.confirmToken,
@@ -63,10 +116,15 @@ const confirmToken = async(req,res) => {
             res.status(404).send({message:'Not found that User!'});
             return;
         }
-        user.confirmAccount = true;
-        user.tokenConfirm = null;
+        if(!user.confirmAccount){
+            user.confirmAccount = true;
+            user.tokenConfirm = null;
 
-        res.status(200).json(user);
+            user.save();
+
+            return res.status(200).json(user);
+        }
+        return res.send({message:'This account is already validated!'})
     })
     .catch(error => {
         res.status(500).send({error:error.message});
@@ -76,5 +134,6 @@ const confirmToken = async(req,res) => {
 module.exports = {
     registerUser,
     confirmToken,
-    loginUser
+    loginUser,
+    logout,
 }
