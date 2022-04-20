@@ -1,0 +1,36 @@
+.navbar{
+    overflow: hidden;
+    width: 100%;
+    padding: 30px 35px;
+    z-index: 9;
+    background-color: white;
+}
+
+.navbar ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+    font-weight: bold;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color:black;
+    text-transform: uppercase ;
+}
+
+.navbar ul li::after {
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #dd0000;
+    position: absolute;
+    left:0;
+    bottom: -10px;
+    transition:0.5s;
+}
+
+.navbar ul li:hover::after{
+    width: 100%;
+}

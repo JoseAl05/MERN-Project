@@ -4,10 +4,21 @@
     box-sizing: border-box;
     text-align: center;
 }
+.register-module h1{
+    color: white;
+    font-weight: bold;
+}
 .form-control{
     width:25%;
     margin: 15px auto;
 }
+.form-group label{
+    color:#FF5733;
+}
 .register-module h1{
     text-transform:uppercase;
+}
+.error-msg{
+    color:  #C70039 ;
+    font-weight: bold;
 }
