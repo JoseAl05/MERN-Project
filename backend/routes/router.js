@@ -16,7 +16,7 @@ router.use(function(req, res, next) {
 router.post("/signup/",checkSchema(signUpSchema),verifyUserSession,userController.registerUser);
 router.get("/confirm-account/:confirmToken",userController.confirmToken);
 router.post("/signin/",checkSchema(signInSchema),userController.loginUser);
-router.get("/logout/",userController.logout);
+router.get("/logout/",verifyUserSession,userController.logout);
 router.get("/logged-user/",verifyUserSession,(req,res) => {
     return res.json(req.user);
 })
