@@ -1,27 +1,260 @@
-.login-module{
-    margin: 0 auto;
-    padding: 15% 15%;
-    box-sizing: border-box;
-    text-align: center;
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
+form{
+    width: 25%;
 }
-.form-control{
-    width:25%;
-    margin: 15px auto;
+.select-form-list{
+    display: inline-flex;
+    margin-bottom: 1rem;
+    gap: 100px;
+}
+.select-form-label{
+    color: #00c6cf;
+    cursor: pointer;
+    font-weight: 700;
+    opacity: 0.3;
+    text-transform: capitalize;
+}
+.select-form-label a{
+    text-decoration: none;
+    color: #00c6cf;
+}
+.select-form-label-active{
+    opacity: 1;
+}
+.border-login-form{
+    position: relative;
+    border-style: solid;
+    border-width: 4px;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 25px;
+    color: #111111;
+    background: #111111;
+}
+.login-module{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 13%;
 }
 .login-module h1{
     text-transform: uppercase;
-}
-.border-login{
-    border:1px solid black;
-    border-radius: 10px;
-    margin: 0;
-    background: cadetblue;
-}
-.border-login form{
-    margin: 40px auto;
-}
-.border-login label{
-    text-transform: uppercase;
-    color:white;
+    color: #00c6cf;
     font-weight: bold;
+    text-align: center;
 }
+.alert{
+    width: 100%;
+    margin: 0px auto;
+}
+.alert ul li{
+    white-space: pre-line;
+}
+.login-form{
+    width: 100%;
+    position: relative;
+    height: 50px;
+}
+.login-form .input-login-email{
+    width: 100%;
+    height: 100%;
+    color: #ccfbe5;
+    padding-top: 20px;
+    background: #111111;
+    outline: none;
+    border: none;
+}
+.login-form .input-login-password{
+    width: 100%;
+    height: 100%;
+    color: #ccfbe5;
+    padding-top: 20px;
+    background: #111111;
+    outline: none;
+    border: none;
+}
+.login-form .label-login-email{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    pointer-events: none;
+    width: 100%;
+    font-size: 20px;
+}
+.login-form .label-login-password{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    pointer-events: none;
+    width: 100%;
+    font-size: 20px;
+}
+
+.label-icon-login{
+    position: absolute;
+    bottom: 7px;
+    left:3px;
+    opacity: 1;
+    color: #ccfbe5;
+    transition: opacity 0.3s ease;
+}
+.label-login-content{
+    color: #ccfbe5;
+    position: absolute;
+    bottom: 3px;
+    left: 30px;
+    transition: all 0.3s ease;
+    background: #111111;
+    z-index: 1;
+}
+
+.input-login-email~.focus-border:before,
+.input-login-email~.focus-border:after{
+    content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background: #00ac7c;
+	transition: 0.3s;
+}
+
+.input-login-email~.focus-border:after{
+    top: auto;
+	bottom: 0;
+	left: auto;
+	right: 0;
+}
+
+.input-login-email~.focus-border i:before,
+.input-login-email~.focus-border i:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 2px;
+	height: 0;
+	background: #00ac7c;
+	transition: 0.4s;
+}
+.input-login-email~.focus-border i:after {
+	left: auto;
+	right: 0;
+	top: auto;
+	bottom: 0;
+}
+
+.input-login-email:focus~.focus-border:before,
+.input-login-email:focus~.focus-border:after {
+	width: 100%;
+	transition: 0.3s;
+}
+
+.input-login-email:focus~.focus-border i:before,
+.input-login-email:focus~.focus-border i:after {
+	height: 100%;
+	transition: 0.4s;
+}
+
+.input-login-password~.focus-border:before,
+.input-login-password~.focus-border:after{
+    content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background: #00ac7c;
+	transition: 0.3s;
+}
+
+.input-login-password~.focus-border:after{
+    top: auto;
+	bottom: 0;
+	left: auto;
+	right: 0;
+}
+
+.input-login-password~.focus-border i:before,
+.input-login-password~.focus-border i:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 2px;
+	height: 0;
+	background: #00ac7c;
+	transition: 0.4s;
+}
+.input-login-password~.focus-border i:after {
+	left: auto;
+	right: 0;
+	top: auto;
+	bottom: 0;
+}
+
+.input-login-password:focus~.focus-border:before,
+.input-login-password:focus~.focus-border:after {
+	width: 100%;
+	transition: 0.3s;
+}
+
+.input-login-password:focus~.focus-border i:before,
+.input-login-password:focus~.focus-border i:after {
+	height: 100%;
+	transition: 0.4s;
+}
+
+.login-form .input-login-email:focus + .label-login-email .label-login-content,
+.login-form .input-login-email:not(:placeholder-shown) + .label-login-email .label-login-content{
+    transform: translate(-95%,-175%);
+    font-size: 14px;
+    color: #00ac7c;
+}
+.login-form .input-login-email:focus + .label-login-email .label-icon-login,
+.login-form .input-login-email:not(:placeholder-shown) + .label-login-email .label-icon-login{
+    content: '';
+    opacity: 0;
+}
+
+.login-form .input-login-password:focus + .label-login-password .label-login-content,
+.login-form .input-login-password:not(:placeholder-shown) + .label-login-password .label-login-content{
+    transform: translate(-55%,-175%);
+    font-size: 14px;
+    color: #00ac7c;
+}
+.login-form .input-login-password:focus + .label-login-password .label-icon-login,
+.login-form .input-login-password:not(:placeholder-shown) + .label-login-password .label-icon-login{
+    content: '';
+    opacity: 0;
+}
+
+.btn-submit-login{
+    display: block;
+    background: none;
+    color:#ccfbe5;
+    border: 2px solid;
+    border-radius: 3px;
+    line-height:2;
+    width: 50%;
+    letter-spacing: 0;
+    margin: 0 auto;
+    transition: all 600ms ease;
+}
+.btn-submit-login:hover,
+.btn-submit-login:active {
+  transform: scale(1.1, 1.1);
+  letter-spacing: 5px;
+  box-shadow: inset 0 100px 200px 0 #00ac7c;
+  color: #2f4858;
+  border: none;
+}
+.btn-submit-login:hover::after{
+    opacity: 1;
+}
+/* .btn-submit-login:hover,
+.btn-submit-login:focus {
+  box-shadow: inset 6.5em 0 0 0 #c2f581;
+} */

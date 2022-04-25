@@ -1,33 +1,40 @@
-import React,{useState,useEffect, useContext} from 'react';
-import {Link, Navigate} from 'react-router-dom';
+import React,{useContext} from 'react';
+import {Link, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import './Navbar.css';
-import useAuth from '../../hooks/useAuth';
+import { AuthContext, useAuth } from '../../contexts/AuthContext';
 
 
 const Navbar = () => {
 
-    const logout = async() =>{
-        await axios.get("http://localhost:5000/api/logout/",{withCredentials:true})
-        .then(res => {
-            console.log(res.data);
-            return res.data;
-        });
+    const { setAuth,user} = useAuth();
+    const navigate = useNavigate();
+
+    const logout = async() => {
+        const res = await axios.get(
+            'http://localhost:5000/api/logout/',
+            {
+                withCredentials:true,
+            }
+        );
+        console.log(res.data);
+        setAuth(false);
+        navigate('/login');
     }
 
     return(
         <section>
-            <div className="navbar">
-                <ul className="navbar-menu">
-                    <li><Link to={"/dashboard"}>Dashboard</Link></li>
-                    <li><Link to={"/signup"}>Sign Up</Link></li>
-                    <li><Link to={"/login"}>Sign In</Link></li>
-                    <li><Link to={"/profile"}>Welcome</Link></li>
-                    <li><Link to={"/login"} onClick={logout}>Logout</Link></li>
+            <div className="custom-nav">
+                <ul className="navbar-menu-left">
+                    <li><Link to={"/"}>Games List</Link></li>
+                </ul>
+                <ul className="navbar-menu-right">
+                    <li><Link to={"/profile"}>Welcome, {user}</Link></li>
+                    <li><button type='button' onClick={logout}>Logout</button></li>
                 </ul>
             </div>
         </section>
-        )
+    )
 }
 
 export default Navbar;

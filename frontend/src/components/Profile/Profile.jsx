@@ -1,26 +1,32 @@
-import React, { useContext, useEffect, useState } from 'react';
-import axios from 'axios';
+import React, {useContext} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faUser} from '@fortawesome/free-solid-svg-icons';
-import { useNavigate,Navigate } from 'react-router-dom';
 import './Profile.css';
+import { Navigate,useLocation } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 
 
 const Profile = () => {
-    return(
-        <section>
-            <div className='container'>
-                <div className='row'>
-                    <div className='col-sm-4'>
-                        <FontAwesomeIcon icon={faUser} size='10x' color='white'/>
-                        <h1>Hola</h1>
-                    </div>
-                    <div className='col-sm-8'>
-                        <h1>Profile Content</h1>
-                    </div>
-                </div>
+    const location = useLocation();
+    const {user,auth} = useAuth();
+    console.log(auth);
+    console.log(user);
+
+    return auth ?
+    (
+        <div className='container'>
+            <div className='row'>
+                <FontAwesomeIcon icon={faUser} size='10x' color='white' />
+                <h1>Hola, {user}</h1>
             </div>
-        </section>
+            <div className='col-sm-8'>
+                <h1>Profile Content</h1>
+            </div>
+        </div>
+    )
+    :
+    (
+        <Navigate to='/login' replace state={{from:location}}/>
     )
 }
 

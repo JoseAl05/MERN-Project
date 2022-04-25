@@ -1,12 +1,16 @@
-.navbar{
+.custom-nav{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
     overflow: hidden;
     width: 100%;
-    padding: 30px 35px;
-    z-index: 9;
-    background-color: white;
+    padding: 25px 0;
+    background: #0b0b0b;
 }
 
-.navbar ul li {
+.custom-nav ul li {
     list-style: none;
     display: inline-block;
     margin: 0 20px;
@@ -14,23 +18,23 @@
     font-weight: bold;
 }
 
-.navbar ul li a{
+.custom-nav ul li a{
     text-decoration: none;
-    color:black;
+    color:white;
     text-transform: uppercase ;
 }
 
-.navbar ul li::after {
+.custom-nav ul li::after {
     content: '';
     height: 3px;
     width: 0;
-    background: #dd0000;
+    background: #00c6cf;
     position: absolute;
     left:0;
     bottom: -10px;
     transition:0.5s;
 }
 
-.navbar ul li:hover::after{
+.custom-nav ul li:hover::after{
     width: 100%;
 }

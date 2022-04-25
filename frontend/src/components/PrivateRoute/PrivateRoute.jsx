@@ -10,7 +10,7 @@ function PrivateRoute({children}){
     const location = useLocation();
 
     if(auth.auth === null){
-        return null;
+        return <div>Loading........</div>;
     }
 
     return auth.auth ? children : <Navigate to='/login' replace state={{from:location}}/>;
