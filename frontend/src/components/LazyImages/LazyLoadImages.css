@@ -1,31 +1,4 @@
-.games{
-    position: relative;
-}
-.games-grid{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px,3fr));
-    gap: 50vh;
-    justify-content: center;
-    justify-items: center;
-    margin:200px 100px 300px 100px;
-}
-
-
-.next-button{
-    border: none;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
-    width: 25%;
-    display: block;
-    margin: 200px auto 100px auto;
-}
-.previous-button{
-    border: none;
-    background:red;
-    width: 25%;
-    display: block;
-    margin: 200px auto 100px auto;
-}
-/* .games-images{
+.games-images{
     transition: transform 0.5s;
     border-radius: 5px;
 }
@@ -62,4 +35,4 @@
     opacity: 1;
     transform: translateY(40%);
     background-color: #402e3d;
-} */
+}
