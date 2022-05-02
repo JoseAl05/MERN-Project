@@ -10,7 +10,7 @@ const NotAuthNavbar = () => {
         <section>
             <div className="custom-nav">
                 <ul className="navbar-menu-left">
-                    <li><Link to={"/"}>Games List</Link></li>
+                    <li><Link to={"/dashboard/1"}>Games List</Link></li>
                 </ul>
                 <ul className="navbar-menu-right">
                     <li><Link to={"/signup"}>Sign Up</Link></li>

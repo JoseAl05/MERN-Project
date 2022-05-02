@@ -235,7 +235,7 @@ form{
     display: block;
     background: none;
     color:#ccfbe5;
-    border: 2px solid;
+    border: none;
     border-radius: 3px;
     line-height:2;
     width: 50%;

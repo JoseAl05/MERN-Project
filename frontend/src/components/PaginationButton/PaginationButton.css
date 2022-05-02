@@ -1,0 +1,35 @@
+.pagination-numbers{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    padding: 10px;
+    column-gap: 30px;
+}
+.current-page{
+    background: none;
+    border: none;
+    border-radius: 50%;
+    color:white;
+    text-decoration: none;
+    transition: background 0.5s ease;
+}
+.current-page:hover{
+    background: red;
+    color: white;
+}
+.icon-pagination{
+    cursor: pointer;
+    background: none;
+    transition: background 0.5s ease;
+    border-radius: 50%;
+}
+.icon-pagination-disabled{
+    pointer-events: none;
+    opacity: 0.5;
+}
+.icon-pagination:hover{
+    background: red;
+}

@@ -9,6 +9,10 @@
     justify-items: center;
     margin:200px 100px 300px 100px;
 }
+.game-searched{
+    max-height: 30rem;
+    overflow-y: scroll;
+}
 
 
 .next-button{
@@ -25,41 +29,17 @@
     display: block;
     margin: 200px auto 100px auto;
 }
-/* .games-images{
-    transition: transform 0.5s;
-    border-radius: 5px;
-}
-.game-info{
-    position: relative;
-    width: 100%;
-    min-height: 50%;
-    background-size: cover;
-    opacity: 0;
-    z-index: -1;
-    transition: all 0.5s ease;
-    border-radius: 5px;
-}
-.game-info h1{
+.loading-icon{
+    margin: 25% 0 25% 45%;
     color: white;
-    text-align: center;
-    font-weight: bold;
-}
-.game-info p {
-    color: white;
-    word-break: break-all;
-    margin: 5%;
-}
-.game-info ul li{
-    color: white;
-    margin: 2%;
+    animation: spin infinite 2s linear;
 }
 
-.games-images:hover,.games-images:active{
-    transform: scale(1.1);
-}
-.games-images:hover .game-info,.games-images:active .game-info{
-    z-index: 3000;
-    opacity: 1;
-    transform: translateY(40%);
-    background-color: #402e3d;
-} */
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

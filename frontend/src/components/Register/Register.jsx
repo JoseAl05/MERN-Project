@@ -63,9 +63,9 @@ const Register = () =>{
         <>
             <section>
                 <div className='register-module'>
-                    <ul class="select-form-list">
-                        <li class="select-form-label select-form-label-active"><Link to={"/signup"}>Sign up</Link></li>
-                        <li class="select-form-label"><Link to={"/login"}>Sign in</Link></li>
+                    <ul className="select-form-list">
+                        <li className="select-form-label select-form-label-active"><Link to={"/signup"}>Sign up</Link></li>
+                        <li className="select-form-label"><Link to={"/login"}>Sign in</Link></li>
                     </ul>
                     <form onSubmit={register} className="border-register-form">
                         <h1 className="register-header">Register</h1>

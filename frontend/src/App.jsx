@@ -11,6 +11,7 @@ import RegisterMessage from './components/RegisterMessage/RegisterMessage';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import { useAuth } from './contexts/AuthContext';
 import NotAuthNavbar from './components/Navbar/NotAuthNavbar';
+import GameDetails from './components/GameDetails/GameDetails';
 
 
 function App() {
@@ -22,7 +23,9 @@ function App() {
       <Router>
         {auth ? <Navbar/> : <NotAuthNavbar/>}
         <Routes>
-            <Route exact path="/" element={<Dashboard/>}/>
+            <Route exact path="/" />
+            <Route exact path="/dashboard/:currentPage" element={<Dashboard/>}/>
+            <Route path="/game-details/:gameId/:gameName" element={<GameDetails/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/signup" element={<Register/>}/>
             <Route path="/profile"element={<Profile/>}/>

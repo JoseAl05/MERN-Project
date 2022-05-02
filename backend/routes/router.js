@@ -38,5 +38,16 @@ router.get('/getAllGames/:currentPage',async(req,res) => {
         res.status(500).send(error);
     }
 })
+router.get('/searchGame/:gameSearched',async(req,res) => {
+    console.log(req.params)
+    try{
+        const apiRes = await axios.get(URL_LIST_OF_GAMES + '?key=' + API_KEY + '&search=' + req.params.gameSearched)
+        if(apiRes.status === 200){
+            return res.status(200).json(apiRes.data);
+        }
+    }catch(error){
+        res.status(500).send(error);
+    }
+})
 
 module.exports = router;

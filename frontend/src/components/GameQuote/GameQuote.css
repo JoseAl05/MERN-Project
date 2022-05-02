@@ -1,0 +1,143 @@
+.quote-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+.game-name{
+    font-style: italic;
+    font-size: 1.7em;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+.quote-game-name{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    color: lightgray;
+    font-size: .9em;
+    padding-top: 1%;
+    width: 50%;
+}
+.quote-game-name h3{
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 3%;
+}
+.quote-platforms{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    color: lightgray;
+    font-size: .9em;
+    border-bottom: 1px solid grey;
+    width: 50%;
+}
+.quote-platforms h3{
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 3%;
+}
+.highlight{
+    font-weight: bold;
+    color: white;
+    background-color: #00909b;
+    border-radius: 5px;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    width: 25%;
+    text-align: center;
+}
+.highlight-no-data{
+    font-weight: bold;
+    color: white;
+    background-color: red;
+    border-radius: 5px;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    width: 25%;
+    text-align: center;
+}
+.highlight-xbox{
+    font-weight: bold;
+    color: white;
+    background-color:#107C10;
+    border-radius: 5px;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    width: 25%;
+    text-align: center;
+}
+.highlight-playstation{
+    font-weight: bold;
+    color: white;
+    background-color:#003791;
+    border-radius: 5px;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    width: 25%;
+    text-align: center;
+}
+.highlight-pc{
+    font-weight: bold;
+    color: white;
+    background-color:#c0ad00f8;
+    border-radius: 5px;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    width: 25%;
+    text-align: center;
+}
+.highlight-nintendo{
+    font-weight: bold;
+    color: white;
+    background-color:#e60012;
+    border-radius: 5px;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    width: 25%;
+    text-align: center;
+}
+.highlight-macOS{
+    font-weight: bold;
+    color: white;
+    background-color:#555555;
+    border-radius: 5px;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    width: 25%;
+    text-align: center;
+}
+.highlight-linux{
+    font-weight: bold;
+    color: white;
+    background-color:#E95420;
+    border-radius: 5px;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    width: 25%;
+    text-align: center;
+}
+.highlight-web{
+    font-weight: bold;
+    color: white;
+    background-color:#160053f8;
+    border-radius: 5px;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    width: 25%;
+    text-align: center;
+}
+.highlight-iOS{
+    font-weight: bold;
+    color: white;
+    background-color:#555555;
+    border-radius: 5px;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    width: 25%;
+    text-align: center;
+}

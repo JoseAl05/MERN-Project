@@ -1,16 +1,14 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { Link } from 'react-router-dom';
 import './LazyLoadImages.css';
 
 
 const LazyLoadImages = ({game,src,alt}) => {
     const {ref, inView} = useInView({
         triggerOnce:true,
-        rootMargin:'10px 0px',
+        rootMargin:'10px 10px',
     })
-    console.log(src);
-    console.log(alt);
-
     return(
         <div
             ref={ref}
@@ -38,10 +36,19 @@ const LazyLoadImages = ({game,src,alt}) => {
                                 <p>Platforms: </p>
                                 {game.platforms.map(platforms => {
                                     return (
-                                        <li>{platforms.platform.name}</li>
+                                        <li key={platforms.platform.id}>{platforms.platform.name}</li>
                                     )
                                 })}
                             </ul>
+                            <Link to=
+                                {{
+                                    pathname:`/game-details/${game.id}/${game.name}`,
+                                    hash:`#${game.slug}`,
+                                }}
+                                state={{game:game}}
+                            >
+                                Details
+                            </Link>
                         </div>
                     </div>
                     </>
@@ -53,4 +60,4 @@ const LazyLoadImages = ({game,src,alt}) => {
     )
 }
 
-export default LazyLoadImages;
+export default React.memo(LazyLoadImages);

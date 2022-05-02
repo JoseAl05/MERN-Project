@@ -77,9 +77,9 @@ const Login = () =>{
         <>
             <section>
                 <div className='login-module'>
-                    <ul class="select-form-list">
-                        <li class="select-form-label"><Link to={"/signup"}>Sign up</Link></li>
-                        <li class="select-form-label select-form-label-active"><Link to={"/login"}>Sign in</Link></li>
+                    <ul className="select-form-list">
+                        <li className="select-form-label"><Link to={"/signup"}>Sign up</Link></li>
+                        <li className="select-form-label select-form-label-active"><Link to={"/login"}>Sign in</Link></li>
                     </ul>
                     <form onSubmit={login} className="border-login-form">
                         <h1>Login</h1>
